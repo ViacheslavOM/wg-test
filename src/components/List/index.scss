@@ -1,0 +1,111 @@
+.adaptive-list {
+    padding: 0 20px;
+    &__nav {
+        width: 163px;
+        position: relative;
+    }
+
+    &__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        filter: drop-shadow(0 0 1px rgba(0,0,0,0.04));
+        background-color: rgba(255,255,255,0.98);
+        border: 1px solid rgba(200,200,200,0.85);
+        cursor: pointer;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__label {
+        display: none;
+        font-size: 14px;
+        line-height: 23px;
+        color: #707275;
+        position: relative;
+        cursor: pointer;
+        padding: 0 0 0 30px;
+    }
+
+    &__toggle-btn {
+        width: 12px;
+        position: absolute;
+        top: 8px;
+        left: 10px;
+        z-index: 2;
+        cursor: pointer;
+
+        span {
+            background: #707275;
+            display: block;
+            height: 2px;
+        }
+        span + span {
+            margin-top: 2px;
+        }
+    }
+
+    &__nav:focus .adaptive-list__list &__label {
+        display: block;
+    }
+
+    &__nav:focus &__toggle-btn{
+        display: none;
+    }
+
+    &__input:checked + &__label {
+        display: block;
+    }
+
+    &__nav:focus .adaptive-list__input:checked + &__label {
+        display: block;
+        color: #2a2a2a;
+
+        &:before {
+            content: '→';
+            position: absolute;
+            left: 10px;
+        }
+    }
+}
+
+@media (min-width: 800px) {
+    .adaptive-list__nav {
+        display: block;
+        width: 100%;
+        border: 0;
+    }
+
+    .adaptive-list__toggle-btn {
+        display: none;
+    }
+
+    .adaptive-list__list {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        filter: none;
+    }
+
+    .adaptive-list__label {
+        display: block;
+        padding: 0 8px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .adaptive-list__input:checked + .adaptive-list__label,
+    .adaptive-list__nav:focus .adaptive-list__input:checked + .adaptive-list__label{
+        display: block;
+        background-color: #707275;
+        color: #eff0f1;
+        &:before {
+            content: none;
+        }
+    }
+}
